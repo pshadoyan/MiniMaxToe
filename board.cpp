@@ -75,10 +75,6 @@ void board::win() {
         }
         if (number == 6) {
             cout << "Winner is player 2" << endl;
-
-        } else if (number == 3) {
-            cout << "Winner is player 1" << endl;
-
         }
     }
     /*
@@ -91,12 +87,18 @@ void board::win() {
         }
         if (number == 6) {
             cout << "Winner is player 2" << endl;
-
-        } else if (number == 3) {
-            cout << "Winner is player 1" << endl;
-
         }
     }
+        /*
+     * Check all diagonals (y=x | reverse diags (2,0 & 0,2))
+     */
+    for (int i = 0; i < 3; i++) {
+        number = 0;
+            number += my_board[i][i];
+        if (number == 6) {
+            cout << "Winner is player 2" << endl;
+    }
 
+    }
 }
 
