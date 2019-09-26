@@ -71,6 +71,22 @@ void board::win() {
     for (int i = 0; i < 3; i++) {
         number = 0;
         for (int j = 0; j < 3; j++) {
+            number += my_board[i][j];
+        }
+        if (number == 6) {
+            cout << "Winner is player 2" << endl;
+
+        } else if (number == 3) {
+            cout << "Winner is player 1" << endl;
+
+        }
+    }
+    /*
+     * Check all verticals
+     */
+    for (int i = 0; i < 3; i++) {
+        number = 0;
+        for (int j = 0; j < 3; j++) {
             number += my_board[j][i];
         }
         if (number == 6) {
