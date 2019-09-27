@@ -4,3 +4,9 @@
 
 #include "player.h"
 
+Move player::get_optimal(board& b){
+    Move temp;
+    
+    return temp;
+}
+

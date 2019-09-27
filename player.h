@@ -7,10 +7,15 @@
 
 #include "board.h"
 
+struct Move {
+    int x;
+    int y;
+};
 
 class player {
-
-
+    Move optimal;
+public:
+    Move get_optimal(board& b);
 };
 
 
