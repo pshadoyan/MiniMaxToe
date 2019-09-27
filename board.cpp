@@ -44,6 +44,10 @@ void board::print_board() {
 }
 /*
  * Wonder if someone won or not
+ * Pattern matching could be used to reduce time complexity
+ * However, pattern matching is an isolated solution for set
+ * size. If board size were increased, additional patterns
+ * have to be generated (either manually or algorithmically).
  */
 void board::win() {
     /*
@@ -97,7 +101,7 @@ void board::win() {
             cout << "Winner is player 1" << endl;
         }
     }
-        /*
+    /*
      * Check all diagonals (y=x | reverse diags (2,0 & 0,2))
      */
     for (int i = 0; i < 3; i++) {
@@ -113,7 +117,20 @@ void board::win() {
         if (number == 3 && i == 2) {
             cout << "Winner is player 1" << endl;
         }
-
+    }
+    /*
+     * This is repulsive code
+     */
+    if(my_board[2][0] != 0 && my_board[2][0] != 0 && my_board[1][1] != 0)
+    {
+        if(my_board[2][0] != 1 && my_board[2][0] != 1 && my_board[1][1] != 1)
+        {
+            cout << "Winner is player 1" << endl;
+        }
+        if(my_board[2][0] != 2 && my_board[2][0] != 2 && my_board[1][1] != 2)
+        {
+            cout << "Winner is player 1" << endl;
+        }
     }
 }
 
