@@ -1,10 +1,12 @@
 #include "board.h"
+#include "player.h"
 
 int main() {
 
     board b;
     int in_x, in_y;
     bool gc = false;
+    player AI;
 
     for (int i = 0; i < 9; i++) {
         while (!gc) {
@@ -19,6 +21,10 @@ int main() {
             } else {
                 gc = true;
             }
+        }
+        if(i % 2 == 1)
+        {
+            AI.get_optimal(b, 2);
         }
         b.update_at(in_x, in_y, i % 2 + 1);
         b.print_board();

@@ -24,8 +24,11 @@ vector<vector<int>> board::get_board() {
     return my_board;
 }
 /*
-* Change at a specified position
+* Change at a specified position (if AI, player is always 2)
 */
+void board::update_at(int x, int y){
+    my_board[x][y] = 2;
+}
 void board::update_at(int x, int y, int player) {
     my_board[x][y] = player;
 }
@@ -49,20 +52,8 @@ void board::print_board() {
  * size. If board size were increased, additional patterns
  * have to be generated (either manually or algorithmically).
  */
-void board::win() {
-    /*
-     * Tie?
-     */
-    int number = 0;
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            number += my_board[i][j];
-        }
-    }
-    cout << number << endl;
-    if (number > 14 || number < 13) { //logic only works in the case of a full board
-        cout << "Tie" << endl;
-    }
+int board::win() {
+    int number;
     /*
      * Check all horizontals
      */
@@ -77,9 +68,11 @@ void board::win() {
         }
         if (number == 6) {
             cout << "Winner is player 2" << endl;
+            return 2;
         }
         if (number == 3) {
             cout << "Winner is player 1" << endl;
+            return 1;
         }
     }
     /*
@@ -96,9 +89,11 @@ void board::win() {
         }
         if (number == 6) {
             cout << "Winner is player 2" << endl;
+            return 2;
         }
         if (number == 3) {
             cout << "Winner is player 1" << endl;
+            return 1;
         }
     }
     /*
@@ -113,9 +108,11 @@ void board::win() {
             number += my_board[i][i];
         if (number == 6) {
             cout << "Winner is player 2" << endl;
+            return 2;
         }
         if (number == 3 && i == 2) {
             cout << "Winner is player 1" << endl;
+            return 1;
         }
     }
     /*
@@ -126,11 +123,14 @@ void board::win() {
         if(my_board[2][0] != 1 && my_board[2][0] != 1 && my_board[1][1] != 1)
         {
             cout << "Winner is player 1" << endl;
+            return 1;
         }
         if(my_board[2][0] != 2 && my_board[2][0] != 2 && my_board[1][1] != 2)
         {
             cout << "Winner is player 1" << endl;
+            return 2;
         }
     }
+    return 0;
 }
 
