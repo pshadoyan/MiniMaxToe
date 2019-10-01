@@ -12,7 +12,7 @@ using namespace std;
 
 class board {
 
-    vector<vector<int>> my_board;
+    vector<vector<int> > my_board;
 
 public:
     /*
@@ -21,14 +21,9 @@ public:
     board();
 
     /*
-     * Destruct
-     */
-    ~board();
-
-    /*
      * Retrieve the board
      */
-    vector<vector<int>> get_board();
+    vector<vector<int> > get_board();
 
     /*
     * Change at a specified position
