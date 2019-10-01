@@ -33,8 +33,8 @@ public:
     /*
     * Change at a specified position
     */
-    void update_at(int x, int y);
     void update_at(int x, int y, int player);
+
     /*
      * Print a board? Running out of ideas
      * to make this more complex

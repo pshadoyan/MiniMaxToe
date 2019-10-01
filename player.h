@@ -8,8 +8,10 @@
 #include "board.h"
 
 struct Move {
-    Move(){};
+    Move() {};
+
     Move(int s) : score(s) {}
+
     int x;
     int y;
     int score;
@@ -17,6 +19,8 @@ struct Move {
 
 class player {
     Move optimal;
+    const int AI = 2;
+    const int HM = 1;
 public:
     Move get_optimal(board b, int player);
 };
