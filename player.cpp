@@ -6,16 +6,24 @@
 
 Move player::get_optimal(board b, int player) {
 
+    vector<Move> moves;
+    int bestMove = 0;
     int check = b.win();
+
+    /*
+     * This is the heuristic part,
+     * I could make it so the AI
+     * only ties the player, rather
+     * than win.
+     */
     if (check == 2) {
-        Move(10);
+        return Move(10);
     } else if (check == 1) {
-        Move(-10);
+        return Move(-10);
     } else if (check == 0) {
-        Move(0);
+        return Move(0);
     }
 
-    vector<Move> moves;
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
             if (b.get_board()[i][j] == 0) {
@@ -34,7 +42,6 @@ Move player::get_optimal(board b, int player) {
         }
     }
 
-    int bestMove = 0;
     if (player == 2) {
         int bestScore = -100000;
         for (int i = 0; i < moves.size(); i++) {
