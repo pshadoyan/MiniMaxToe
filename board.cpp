@@ -115,14 +115,16 @@ int board::win() {
     /*
      * Explicit tie definition
      */
+    int empty = 0;
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            number += my_board[i][j];
+            empty += my_board[i][j];
+        }
+        if(empty == 13 || empty == 14){
+            return 0;
         }
     }
-    if (number == 0) {
-        return 0;
-    }
+
     return 3;
 }
 

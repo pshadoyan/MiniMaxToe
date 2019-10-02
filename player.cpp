@@ -6,8 +6,6 @@
 
 Move player::get_optimal(board b, int player) {
 
-    vector<Move> moves;
-    int bestMove = 0;
     int check = b.win();
 
     /*
@@ -24,6 +22,7 @@ Move player::get_optimal(board b, int player) {
         return Move(0);
     }
 
+    vector<Move> moves;
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
             if (b.get_board()[i][j] == 0) {
@@ -42,6 +41,7 @@ Move player::get_optimal(board b, int player) {
         }
     }
 
+    int bestMove = 0;
     if (player == 2) {
         int bestScore = -100000;
         for (int i = 0; i < moves.size(); i++) {
