@@ -31,6 +31,7 @@ int main() {
                 }
             }
             if (i % 2 == 1) {
+                cout << "AI: " << AI.get_optimal(b,2).x << ", " << AI.get_optimal(b,2).y << endl;
                 b.update_at(AI.get_optimal(b,2).x, AI.get_optimal(b,2).y, 2);
                 if(b.win() == 2)
                 {
@@ -38,6 +39,7 @@ int main() {
                 }
                 b.print_board();
             } else {
+                cout << "ME: " << in_x << ", " << in_y << endl;
                 b.update_at(in_x, in_y, i % 2 + 1);
                 if(b.win() == 2)
                 {
@@ -52,6 +54,7 @@ int main() {
             input_loop = false;
         }
     }
+
 
     return 0;
 }

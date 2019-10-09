@@ -19,7 +19,7 @@ struct Move {
 class player {
     Move optimal;
 public:
-    Move get_optimal(board b, int player);
+    Move get_optimal(board &b, int player);
 };
 
 

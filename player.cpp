@@ -4,9 +4,7 @@
 
 #include "player.h"
 
-Move player::get_optimal(board b, int player) {
-
-    int check = b.win();
+Move player::get_optimal(board &b, int player) {
 
     /*
      * This is the heuristic part,
@@ -14,11 +12,11 @@ Move player::get_optimal(board b, int player) {
      * only ties the player, rather
      * than win.
      */
-    if (check == 2) {
+    if (b.win() == 2) {
         return Move(10);
-    } else if (check == 1) {
+    } else if (b.win() == 1) {
         return Move(-10);
-    } else if (check == 0) {
+    } else if (b.win() == 0) {
         return Move(0);
     }
 

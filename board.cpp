@@ -23,9 +23,7 @@ vector<vector<int> > board::get_board() {
 * Change at a specified position (if AI, player is always 2)
 */
 void board::update_at(int x, int y, int player) {
-    if (my_board[x][y] == 0) {
-        my_board[x][y] = player;
-    }
+    my_board[x][y] = player;
 }
 
 /*
@@ -55,51 +53,73 @@ int board::win() {
      * Check all horizontals
      */
     for (int i = 0; i < 3; i++) {
-        number = 0;
+        vector<int> a;
+        vector<int> b;
         for (int j = 0; j < 3; j++) {
-            number += my_board[i][j];
-            if (number == 3 && j != 2) {
-                break;
-            } else if (number == 3) {
+            if(my_board[j][i] == 1)
+            {
+                a.push_back(1);
+            }
+            if(my_board[j][i] == 2)
+            {
+                b.push_back(2);
+            }
+            if(a.size() == 3){
                 return 1;
             }
+            if(b.size() == 3){
+                return 2;
+            }
         }
-        if (number == 6) {
-            return 2;
-        }
+        a.clear();
+        b.clear();
     }
     /*
      * Check all verticals
      */
     for (int i = 0; i < 3; i++) {
-        number = 0;
+        vector<int> a;
+        vector<int> b;
         for (int j = 0; j < 3; j++) {
-            number += my_board[j][i];
-            if (number == 3 && j != 2) {
-                break;
-            } else if (number == 3) {
+            if(my_board[i][j] == 1)
+            {
+                a.push_back(1);
+            }
+            if(my_board[i][j] == 2)
+            {
+                b.push_back(2);
+            }
+            if(a.size() == 3){
                 return 1;
             }
+            if(b.size() == 3){
+                return 2;
+            }
         }
-        if (number == 6) {
-            return 2;
-        }
+        a.clear();
+        b.clear();
     }
     /*
      * Check all diagonals (y=x | reverse diags (2,0 & 0,2))
      */
-    number = 0;
+    vector<int> a;
+    vector<int> b;
     for (int i = 0; i < 3; i++) {
-        number += my_board[i][i];
-        if (number == 6) {
-            return 2;
+        if(my_board[i][i] == 1) {
+            a.push_back(1);
         }
-        if (number == 3 && i != 2) {
-            break;
-        } else if (number == 3) {
+        if(my_board[i][i] == 2) {
+            b.push_back(2);
+        }
+        if(a.size() == 3){
             return 1;
         }
+        if(b.size() == 3){
+            return 2;
+        }
     }
+    a.clear();
+    b.clear();
     /*
      * This is repulsive code, if the board were big enough
      * it would warrant using something like slope for the anti-diag
